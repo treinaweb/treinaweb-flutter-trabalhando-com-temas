@@ -76,7 +76,10 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     ],
                   ),
-                  card(title: 'Ariel Sardinha', subtitle: "ariel@hotmail")
+                  card(
+                      context: context,
+                      title: 'Ariel Sardinha',
+                      subtitle: "ariel@hotmail")
                 ],
               ),
             ),
@@ -84,18 +87,20 @@ class _MyHomePageState extends State<MyHomePage> {
               padding: const EdgeInsets.symmetric(vertical: 25),
               child: Table(
                 border: TableBorder.symmetric(
-                    inside: const BorderSide(color: Colors.black)),
+                  inside:
+                      BorderSide(color: Theme.of(context).primaryColorLight),
+                ),
                 children: [
                   TableRow(children: [
-                    card(title: '27', subtitle: 'Projetos'),
-                    card(title: '259', subtitle: 'Tosks'),
-                    card(title: '35', subtitle: 'Groups'),
+                    card(context: context, title: '27', subtitle: 'Projetos'),
+                    card(context: context, title: '259', subtitle: 'Tosks'),
+                    card(context: context, title: '35', subtitle: 'Groups'),
                   ]),
                 ],
               ),
             ),
-            const Divider(
-              color: Colors.black,
+            Divider(
+              color: Theme.of(context).dividerColor,
               height: 10,
             ),
             listTile(icon: Icons.work, title: 'Workspace'),
@@ -129,9 +134,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   );
                 },
                 child: listTile(
-                  icon: Icons.logout,
-                  title: 'Logout',
-                )),
+                    icon: Icons.logout, title: 'Logout', color: Colors.red)),
           ],
         ),
       ),
@@ -141,22 +144,29 @@ class _MyHomePageState extends State<MyHomePage> {
 
 Widget listTile({required IconData icon, required String title, Color? color}) {
   return ListTile(
+    iconColor: color,
+    textColor: color,
     leading: Icon(icon),
     title: Text(title),
   );
 }
 
-Widget card({required String title, required String subtitle}) {
+Widget card(
+    {required String title,
+    required String subtitle,
+    required BuildContext context}) {
   return Column(
     children: [
       Padding(
         padding: const EdgeInsets.symmetric(vertical: 5),
         child: Text(
           title,
+          style: Theme.of(context).textTheme.bodyText1,
         ),
       ),
       Text(
         subtitle,
+        style: Theme.of(context).textTheme.bodyText2,
       )
     ],
   );
