@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:perfil/index.dart';
+import 'package:perfil/theme_data.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,28 +16,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Perfil',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-          primaryColorLight: Colors.black,
-          primaryColor: primaryColor,
-          appBarTheme: const AppBarTheme(
-            backgroundColor: primaryColor,
-          ),
-          scaffoldBackgroundColor: Colors.white,
-          textTheme: const TextTheme(
-            bodyText1: TextStyle(
-              color: primaryColor,
-              fontWeight: FontWeight.bold,
-              fontSize: 20,
-            ),
-          ),
-          dividerColor: Colors.black,
-          listTileTheme: const ListTileThemeData(
-            textColor: Colors.black,
-            iconColor: primaryColor,
-          ),
-          snackBarTheme: const SnackBarThemeData(
-            actionTextColor: primaryColor,
-          )),
+      theme: ThemeDataPerfil.getLight(),
+      darkTheme: ThemeDataPerfil.getDart(),
       home: const MyHomePage(),
     );
   }
