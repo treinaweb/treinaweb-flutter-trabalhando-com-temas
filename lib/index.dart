@@ -14,14 +14,12 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
       drawer: Drawer(
         child: ListView(
           children: ListMenu.get(context),
         ),
       ),
       appBar: AppBar(
-        backgroundColor: Colors.black,
         title: Row(
           children: [
             Container(
@@ -71,7 +69,6 @@ class _MyHomePageState extends State<MyHomePage> {
                           borderRadius:
                               const BorderRadius.all(Radius.circular(10)),
                           child: Container(
-                            color: Colors.blue,
                             padding: const EdgeInsets.all(5),
                             child: const Icon(Icons.edit, size: 20),
                           ),
@@ -87,7 +84,7 @@ class _MyHomePageState extends State<MyHomePage> {
               padding: const EdgeInsets.symmetric(vertical: 25),
               child: Table(
                 border: TableBorder.symmetric(
-                    inside: const BorderSide(color: Colors.white)),
+                    inside: const BorderSide(color: Colors.black)),
                 children: [
                   TableRow(children: [
                     card(title: '27', subtitle: 'Projetos'),
@@ -98,7 +95,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
             const Divider(
-              color: Colors.white,
+              color: Colors.black,
               height: 10,
             ),
             listTile(icon: Icons.work, title: 'Workspace'),
@@ -114,16 +111,10 @@ class _MyHomePageState extends State<MyHomePage> {
               },
               secondary: const Icon(
                 Icons.dark_mode,
-                color: Colors.white,
               ),
               title: const Text(
                 'Dark Theme',
-                style: TextStyle(color: Colors.white),
               ),
-              activeColor: Colors.white,
-              inactiveThumbColor: Colors.white,
-              activeTrackColor: Colors.blue,
-              inactiveTrackColor: Colors.red,
             ),
             GestureDetector(
                 onTap: () {
@@ -131,14 +122,16 @@ class _MyHomePageState extends State<MyHomePage> {
                     SnackBar(
                       content: const Text('Tem certeza que deseja sair ?'),
                       action: SnackBarAction(
-                          label: 'Sair',
-                          onPressed: () {},
-                          textColor: Colors.white),
+                        label: 'Sair',
+                        onPressed: () {},
+                      ),
                     ),
                   );
                 },
                 child: listTile(
-                    icon: Icons.logout, title: 'Logout', color: Colors.red)),
+                  icon: Icons.logout,
+                  title: 'Logout',
+                )),
           ],
         ),
       ),
@@ -148,8 +141,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
 Widget listTile({required IconData icon, required String title, Color? color}) {
   return ListTile(
-    iconColor: color ?? Colors.white,
-    textColor: color ?? Colors.white,
     leading: Icon(icon),
     title: Text(title),
   );
@@ -162,13 +153,10 @@ Widget card({required String title, required String subtitle}) {
         padding: const EdgeInsets.symmetric(vertical: 5),
         child: Text(
           title,
-          style: const TextStyle(
-              fontWeight: FontWeight.bold, color: Colors.white, fontSize: 20),
         ),
       ),
       Text(
         subtitle,
-        style: const TextStyle(color: Colors.white),
       )
     ],
   );
