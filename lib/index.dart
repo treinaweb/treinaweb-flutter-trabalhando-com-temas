@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:perfil/controller.dart';
 import 'package:perfil/list.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -110,9 +111,9 @@ class _MyHomePageState extends State<MyHomePage> {
             SwitchListTile(
               value: darMode,
               onChanged: (value) {
-                setState(() {
-                  darMode = value;
-                });
+                darMode = value;
+                var isDark = darMode ? ThemeMode.dark : ThemeMode.light;
+                PerfilController.setThemeMode(isDark);
               },
               secondary: const Icon(
                 Icons.dark_mode,
